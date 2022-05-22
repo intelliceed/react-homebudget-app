@@ -1,62 +1,70 @@
-# React HomeBudget App Task 🏠🧮📈
+# Getting Started with Create React App
 
-The task is to implement small home budget app that will allow to track income/outcome transactions. 
-The app should be written using the technologies mentioned in the **[Technologies](#technologies)** section.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Technologies
+## Available Scripts
 
-- Typescript/Javascript
-- `React` version `16.8 and up`, please make sure to use Hooks and Functional components
-- `Redux` or `Redux-Toolkit` version compatible with React version
-- `Any UI library` for quick scaffolding (Reactstrap/React Bootstrap etc.)
-- Use `localStorage` as a DB for the app
-- Implement asynchronous layer that will load data from `localStorage` with `Redux-Thunk` or `Redux-Saga`
+In the project directory, you can run:
 
-## Data layer
+### `npm start`
 
-There are two models in the app: 
-1. ### `Category` 
-> Represents one category of transaction. There must be pre-defined categories in the app from the beginning (3 is enough). As examples of categories: `Salary`, `Food`, `Going out`. 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```
-//  Should have following fields: 
-{ 
-    id: Number|String, 
-    name: String
-} 
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-2. ### `Transaction`
-> Represents transaction.
+### `npm test`
 
-```
-// Should have following fields: `
-{ 
-    id: Number|String, 
-    name: String,
-    date: Date,
-    amount: Number, (where `positive` value means income and `negative` value means outcome )
-    categoryId: Number|String, (reference by category id)
-}
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Pages
+### `npm run build`
 
-### Budget
-This is default page and app entry point that will represent 2-column layout:
-- `First column` - List of categories with the ability to add/remove categories
-- `Second column` - Should have a form for adding a new positive/negative transaction by category. Under the form should be a list of transactions
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-> Note: When the category gets deleted you need to move all transactions of category into `Archived Transactions` list
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Example of UI Presentation
-![wireframe](https://user-images.githubusercontent.com/1899626/167616466-3539e35b-9cce-4877-b64a-a3f4d156aa3c.png)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## How to start
+### `npm run eject`
 
-1. Fork this repository
-2. Complete the task in your repository
-3. Create a PR to this repository
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Happy coding! 🚀
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

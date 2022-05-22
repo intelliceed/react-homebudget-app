@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.row>* {
+  padding-right: 0 !important;
+}
+
+.delete-category-button {
+  float: right;
+
+}
+
+.new-category-block {
+  padding-left: 0 !important;
+}
+
+.new-category-button {
+  cursor: pointer;
+}
+
+.button-position {
+  float: inline-end;
+}
+
+.recent-transaction-amount-text {
+  margin-left: 10px;
+}
+
+.recent-transaction-amount-dollar-format {
+  float: right;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
