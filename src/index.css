@@ -29,6 +29,10 @@ code {
   cursor: pointer;
 }
 
+.category-name {
+  margin-left: 10px;
+}
+
 .button-position {
   float: inline-end;
 }
@@ -49,4 +53,41 @@ code {
 
 .red {
   color: red;
+}
+
+.recent-transaction-amount-dollar-format-income {
+  float: left;
+  font-size: 18px;
+}
+
+.recent-transaction-amount-dollar-format-outcome {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.recent-transaction-create-date {
+  color: lightslategray;
+  font-size: 12px;
+}
+
+.add-transaction-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#add-transaction-button {
+  width: 165px;
+}
+
+.recent-transaction-category {
+  margin-right: 10px;
+  color: lightslategray;
 }

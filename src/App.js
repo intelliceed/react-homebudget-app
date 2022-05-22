@@ -8,15 +8,19 @@ import Categories from "./components/Categories";
 import Transaction from "./components/Transaction";
 
 const App = () => {
-  const [categoriesList, setCategoriesList] = useState(["cat1", "cat2"]);
+  const [categoriesList, setCategoriesList] = useState(["Salary", "Gifts", "Food"]);
 
   const validateCategory = (newCategory) => {
     if (newCategory.trim() === "") {
       return false;
     }
+    
+    const foundCategory = categoriesList.find(category => category === newCategory);
 
-    // TODO проверка на уникальност
-
+    if(foundCategory !== undefined) {
+      return false;
+    }
+    
     return true;
   }
 
