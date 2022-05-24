@@ -5,7 +5,7 @@ import { ArrowUpCircle } from "react-bootstrap-icons";
 import { monthNames } from "../utils/date";
 
 const RecentTransaction = (props) => {
-  const { transactions } = props;
+  const { transactions, categories } = props;
 
   const totalIncome = transactions.reduce((prev, current) => {
     return prev + (current.amount > 0 ? current.amount : 0);
@@ -42,6 +42,18 @@ const RecentTransaction = (props) => {
     return `${monthNames[month]} ${day}, ${year} ${hours}:${minutes}`;
   };
 
+  const getCategoryNameById = (categoryId) => {
+    let categoryName = "";
+
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i]["id"] === categoryId) {
+        categoryName = categories[i]["name"];
+      }
+    }
+
+    return categoryName;
+  };
+
   return (
     <Container>
       <Row>
@@ -49,9 +61,9 @@ const RecentTransaction = (props) => {
       </Row>
       <Row>
         <ListGroup>
-          {transactions.map((transaction, index) => {
+          {transactions.map((transaction) => {
             return (
-              <ListGroup.Item key={`recen-transaction-item-${index}`}>
+              <ListGroup.Item key={`recen-transaction-item-${transaction.id}`}>
                 <div
                   className={`recent-transaction-amount-dollar-format ${
                     transaction.amount > 0 ? "green" : "red"
@@ -60,8 +72,11 @@ const RecentTransaction = (props) => {
                   {formatter.format(transaction.amount)}
                 </div>
                 <div>
+                  <span className="recent-transaction-id">
+                    {transaction.id}.{" "}
+                  </span>
                   <span className="recent-transaction-category">
-                    [{transaction.category}]
+                    [{getCategoryNameById(transaction.categoryId)}]
                   </span>
                   <span>{transaction.name}</span>
                   <span className="recent-transaction-amount-text">

@@ -10,21 +10,24 @@ const Transaction = (props) => {
 
   const [transactions, setTransactions] = useState([
     {
+      id: 1,
       name: "Complete store project",
       amount: 200,
-      category: "Salary",
+      categoryId: 1,
       createDate: new Date(),
     },
     {
+      id: 2,
       name: "Received from John",
       amount: 50,
-      category: "Gifts",
+      categoryId: 2,
       createDate: new Date(),
     },
     {
+      id: 3,
       name: "Pizza",
       amount: -15,
-      category: "Food",
+      categoryId: 3,
       createDate: new Date(),
     },
   ]);
@@ -41,9 +44,9 @@ const Transaction = (props) => {
       <Row>
         <Alert variant="light">Transactions</Alert>
       </Row>
-      <AddTransaction addTransaction={addTransaction} categories={categories} />
+      <AddTransaction transactions={transactions} addTransaction={addTransaction} categories={categories}/>
       <Row>
-        <RecentTransaction transactions={transactions} />
+        <RecentTransaction transactions={transactions} categories={categories}/>
       </Row>
     </Container>
   );

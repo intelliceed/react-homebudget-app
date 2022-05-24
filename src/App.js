@@ -8,14 +8,30 @@ import Categories from "./components/Categories";
 import Transaction from "./components/Transaction";
 
 const App = () => {
-  const [categoriesList, setCategoriesList] = useState(["Salary", "Gifts", "Food"]);
+  const [categoriesList, setCategoriesList] = useState([
+    {
+      id: 1, 
+      name: "Salary", 
+    },
+
+    {
+      id: 2, 
+      name: "Gifts", 
+    },
+
+    {
+      id: 3, 
+      name: "Food", 
+    }
+    
+  ]);
 
   const validateCategory = (newCategory) => {
     if (newCategory.trim() === "") {
       return false;
     }
     
-    const foundCategory = categoriesList.find(category => category === newCategory);
+    const foundCategory = categoriesList.find(category => category.name === newCategory);
 
     if(foundCategory !== undefined) {
       return false;
@@ -27,15 +43,27 @@ const App = () => {
   const addCategory = (newCategory) => {
     if(!validateCategory(newCategory)) return false;
 
-    return setCategoriesList((oldArray) => [...oldArray, newCategory]);
+    let maxId = 0;
+
+    for (let i = 0; i < categoriesList.length; i++) {
+        if (categoriesList[i]["id"] > maxId) {
+          maxId = categoriesList[i]["id"];
+        }
+    }
+
+    let nextId = maxId + 1;
+
+    return setCategoriesList((oldArray) => [...oldArray, {id: nextId, name: newCategory}]);
    
   };
 
-  const deleteCategory = (categoryName) => {
+  const deleteCategory = (categoryId) => {
     setCategoriesList((oldCategoriesList) =>
-      oldCategoriesList.filter((cat) => cat !== categoryName)
+      oldCategoriesList.filter((cat) => cat.id !== categoryId)
     );
   };
+
+
 
   return (
     <Container>

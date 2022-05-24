@@ -30,15 +30,15 @@ const Categories = (props) => {
       </Row>
       <Row>
         <ListGroup>
-          {categories.map((category, index) => {
+          {categories.map((category) => {
             return (
-              <ListGroup.Item key={`category-item-${index}`}>
+              <ListGroup.Item key={`category-item-${category.id}`}>
                 <FolderFill />
-                <span className="category-name">{category}</span>
+                <span className="category-name">{category.name}</span>
                 <CloseButton
                   className="delete-category-button"
                   onClick={() => {
-                    deleteCategory(category);
+                    deleteCategory(category.id);
                   }}
                 />
               </ListGroup.Item>

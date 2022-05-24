@@ -3,8 +3,7 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 import { useRef } from "react";
 
 const AddTransaction = (props) => {
-  const { addTransaction, categories } = props;
-
+  const { addTransaction, categories, transactions } = props;
   const newTransactionNameRef = useRef();
   const newTransactionAmountRef = useRef();
   const newTransactionCategoryRef = useRef();
@@ -14,16 +13,28 @@ const AddTransaction = (props) => {
     const newTransactionAmount = parseFloat(
       newTransactionAmountRef.current.value
     );
-    const newTransactionCategory = newTransactionCategoryRef.current.value;
+    const newTransactionCategory = parseInt(newTransactionCategoryRef.current.value);
 
     if (newTransactionAmount === 0) {
       return false;
     }
 
+
+    let maxId = 0;
+    
+    for (let i = 0; i < transactions.length; i++) {
+      if (transactions[i]["id"] > maxId) {
+        maxId = transactions[i]["id"];
+      }
+    }
+    
+    let nextId = maxId + 1;
+
     const newTransactionData = {
+      id: nextId,
       name: newTransactionName,
       amount: newTransactionAmount,
-      category: newTransactionCategory,
+      categoryId: newTransactionCategory,
       createDate: new Date(),
     };
 
@@ -51,10 +62,10 @@ const AddTransaction = (props) => {
       <Row className="mb-3">
         <Form.Group>
           <Form.Select ref={newTransactionCategoryRef}>
-            {categories.map((cat, index) => {
+            {categories.map((cat) => {
               return (
-                <option key={`transaction-category-${index}`} value={cat}>
-                  {cat}
+                <option key={`transaction-category-${cat.id}`} value={cat.id}>
+                  {cat.name}
                 </option>
               );
             })}
