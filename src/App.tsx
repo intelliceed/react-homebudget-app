@@ -1,8 +1,9 @@
+import Budget from "./app/pages/Budget";
 
 function App() {
   return (
     <div className="App">
-   APP
+      <Budget />
     </div>
   );
 }

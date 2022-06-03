@@ -1,5 +1,5 @@
-
+import { categoriesSlice } from "../reducers/categoriesSlice";
 
 export const allActionCreators = {
-//   ...actions,
+  ...categoriesSlice.actions,
 };
