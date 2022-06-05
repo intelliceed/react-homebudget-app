@@ -1,44 +1,22 @@
-import { FC, useEffect } from "react";
-import { Box, Grid } from "@mui/material";
-import { useActions, useAppDispatch, useAppSelector } from "../../store/hooks";
-import {
-  getCategories,
-  selectCategories,
-} from "../../store/reducers/categoriesSlice";
-import { FetchStatus } from "../../models/categories";
-import { setToLocalStorage } from "../../utilities/helpers";
+import { FC } from "react";
+import { Grid } from "@mui/material";
 import CategoryTabs from "../../components/CategoryTabs";
-import Preloader from '../../components/Preloader';
+import TransactionForm from "../../components/TransactionForm";
+import TransactionTabs from "../../components/TransactionTabs";
 
 interface BudgetProps {}
 
 const Budget: FC<BudgetProps> = () => {
-  const { categories, status } = useAppSelector(selectCategories);
-  const { addCategory } = useActions();
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    !categories.length && dispatch(getCategories());
-  }, [categories.length, dispatch]);
-  useEffect(() => {
-    if (!categories.length) {
-      [
-        { id: 1, name: "Salary" },
-        { id: 2, name: "Food" },
-        { id: 3, name: "Going out" },
-      ].map((category) => {
-        setToLocalStorage(category);
-        addCategory(category);
-      });
-    }
-  }, []);
-  if (status === FetchStatus.loading) return <Preloader />;
   return (
-    <Grid container spacing={2}>
+    <Grid sx={{ mt: 3 }} container spacing={2}>
       <Grid item xs={3}>
         <nav aria-label="main mailbox folders">
-          <CategoryTabs categories={categories} />
+          <CategoryTabs />
         </nav>
+      </Grid>
+      <Grid item xs={9}>
+        <TransactionForm />
+        <TransactionTabs />
       </Grid>
     </Grid>
   );

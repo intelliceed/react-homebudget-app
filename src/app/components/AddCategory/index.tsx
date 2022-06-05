@@ -1,20 +1,19 @@
 import { FC } from "react";
 import { TextField, Tooltip, Button } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useActions } from "../../store/hooks";
-import { Category } from "../../models/categories";
+import { useActions, useAppSelector } from "../../store/hooks";
 import { idGenerator, setToLocalStorage } from "../../utilities/helpers";
 import { useSnackbar } from "notistack";
 import SendIcon from "@mui/icons-material/Send";
+import { selectCategories } from "../../store/reducers/categoriesSlice";
 
-interface AddCategoryProps {
-  categories: Category[];
-}
+interface AddCategoryProps {}
 interface Inputs {
   category: string;
 }
 
-const AddCategoryForm: FC<AddCategoryProps> = ({ categories }) => {
+const AddCategoryForm: FC<AddCategoryProps> = () => {
+  const { categories } = useAppSelector(selectCategories);
   const { addCategory } = useActions();
   const { enqueueSnackbar } = useSnackbar();
   const {
@@ -27,7 +26,7 @@ const AddCategoryForm: FC<AddCategoryProps> = ({ categories }) => {
     const categoryName = category.trim();
     if (!categories.find((item) => item.name === categoryName)) {
       const categoryData = { id: idGenerator(), name: categoryName };
-      setToLocalStorage(categoryData);
+      setToLocalStorage(categoryData, "categories");
       addCategory(categoryData);
       enqueueSnackbar("This category has been added!", { variant: "success" });
     } else enqueueSnackbar("This category exist!", { variant: "error" });

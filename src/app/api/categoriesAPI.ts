@@ -6,7 +6,7 @@ export const fetchCategories = () => {
     setTimeout(
       () =>
         resolve({
-          data: getFromLocalStorage(),
+          data: getFromLocalStorage("categories") as Category[],
         }),
       1000
     );

@@ -17,21 +17,28 @@ interface CategoryItemProps {
 }
 
 const CategoryItem: FC<CategoryItemProps> = ({ category }) => {
-  const { removeCategory } = useActions();
-  const onRemove = (id: number) => {
-    removeFromLocalStorage(id);
-    removeCategory(id);
+  const { removeCategory, setCurrentCategory } = useActions();
+  const onRemove = () => {
+    removeFromLocalStorage(category.id, "categories");
+    removeCategory(category.id);
+  };
+  const onSetCategory = () => {
+    setCurrentCategory(category.id);
   };
   return (
-    <ListItem key={category.id} disablePadding>
-      <ListItemButton>
+    <ListItem
+      sx={{ borderBottom: "1px solid gray" }}
+      key={category.id}
+      disablePadding
+    >
+      <ListItemButton onClick={onSetCategory}>
         <ListItemIcon>
           <ClassIcon />
         </ListItemIcon>
         <ListItemText primary={category.name} />
       </ListItemButton>
       <IconButton
-        onClick={() => onRemove(category.id)}
+        onClick={onRemove}
         color="success"
         aria-label="picture"
         component="span"

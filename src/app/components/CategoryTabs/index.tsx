@@ -7,15 +7,13 @@ import CategoryList from "../CategoryList";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import BasicTabs from "../TabPanel";
 
-interface CategoryTabsProps {
-  categories: Category[];
-}
+interface CategoryTabsProps {}
 
-const CategoryTabs: FC<CategoryTabsProps> = ({ categories }) => {
+const CategoryTabs: FC<CategoryTabsProps> = () => {
   const tabs: ITab[] = [
     {
       tabName: "Category",
-      children: <CategoryList categories={categories} />,
+      children: <CategoryList />,
     },
     {
       tabName: (
@@ -23,7 +21,7 @@ const CategoryTabs: FC<CategoryTabsProps> = ({ categories }) => {
           <AddCircleIcon />
         </IconButton>
       ),
-      children: <AddCategoryForm categories={categories} />,
+      children: <AddCategoryForm />,
     },
   ];
   return <BasicTabs tabs={tabs} />;

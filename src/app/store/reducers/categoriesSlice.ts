@@ -4,13 +4,15 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Category } from "../../models/categories";
 import { RootState } from "../store";
 
-interface CaategoriesState {
+interface CategoriesState {
   categories: Category[];
   status: FetchStatus.idle | FetchStatus.loading | FetchStatus.failed;
+  currentCategory: number | null;
 }
-const initialState: CaategoriesState = {
+const initialState: CategoriesState = {
   categories: [],
   status: FetchStatus.idle,
+  currentCategory: null,
 };
 
 export const getCategories = createAsyncThunk(
@@ -33,6 +35,9 @@ export const categoriesSlice = createSlice({
         (category) => category.id !== action.payload
       );
     },
+    setCurrentCategory: (state, action: PayloadAction<number>) => {
+      state.currentCategory = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -41,7 +46,7 @@ export const categoriesSlice = createSlice({
       })
       .addCase(getCategories.fulfilled, (state, action) => {
         state.status = FetchStatus.idle;
-        state.categories.concat(action.payload);
+        state.categories = state.categories.concat(action.payload);
       })
       .addCase(getCategories.rejected, (state) => {
         state.status = FetchStatus.failed;
