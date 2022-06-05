@@ -1,10 +1,11 @@
+import { Container } from "@mui/material";
 import Budget from "./app/pages/Budget";
 
 function App() {
   return (
-    <div className="App">
+    <Container>
       <Budget />
-    </div>
+    </Container>
   );
 }
 

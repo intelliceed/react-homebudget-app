@@ -6,11 +6,7 @@ export const fetchCategories = () => {
     setTimeout(
       () =>
         resolve({
-          data: getFromLocalStorage().concat([
-            { id: 1, name: "Salary" },
-            { id: 2, name: "Food" },
-            { id: 3, name: "Going out" },
-          ]),
+          data: getFromLocalStorage(),
         }),
       1000
     );

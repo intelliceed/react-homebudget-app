@@ -26,7 +26,7 @@ export const categoriesSlice = createSlice({
   initialState,
   reducers: {
     addCategory: (state, action: PayloadAction<Category>) => {
-      state.categories.push(action.payload);
+      state.categories.unshift(action.payload);
     },
     removeCategory: (state, action: PayloadAction<number>) => {
       state.categories = state.categories.filter(
@@ -41,7 +41,7 @@ export const categoriesSlice = createSlice({
       })
       .addCase(getCategories.fulfilled, (state, action) => {
         state.status = FetchStatus.idle;
-        state.categories = action.payload;
+        state.categories.concat(action.payload);
       })
       .addCase(getCategories.rejected, (state) => {
         state.status = FetchStatus.failed;
