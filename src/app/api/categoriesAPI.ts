@@ -1,4 +1,4 @@
-import { getFromLocalStorage } from "../utilities/helpers";
+import { parseLocalData } from "../utilities/helpers";
 import { Category } from "./../models/categories";
 
 export const fetchCategories = () => {
@@ -6,7 +6,7 @@ export const fetchCategories = () => {
     setTimeout(
       () =>
         resolve({
-          data: getFromLocalStorage("categories") as Category[],
+          data: parseLocalData("categories") as Category[],
         }),
       1000
     );

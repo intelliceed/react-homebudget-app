@@ -1,33 +1,28 @@
-import { Transaction } from './../models/transaction';
+import { Transaction } from "./../models/transaction";
 import { Category } from "./../models/categories";
-import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
-import moment from 'moment';
+import moment from "moment";
 
-const parseLocalData = (name: string) => {
-  const localData = localStorage.getItem(name);
+export const parseLocalData = (field: string) => {
+  const localData = localStorage.getItem(field);
   if (localData) {
-    const data: Category[]|Transaction[] = JSON.parse(localData);
+    const data: Category[] | Transaction[] = JSON.parse(localData);
     return data;
   } else return [];
 };
-export const getFromLocalStorage = (field:string) =>
-  // callback: ActionCreatorWithPayload<Category, string>
-  {
-    const localData = parseLocalData(field);
-    return localData;
-    // localData && localData.map(callback);
-  };
-export const setToLocalStorage = (data: Category|Transaction,field:string) => {
+
+export const setToLocalStorage = (
+  data: Category | Transaction,
+  field: string
+) => {
   const localData = parseLocalData(field);
   if (localData) {
-    !localData.find((item) => item.id === data.id) &&
-      localData.push(data);
+    !localData.find((item) => item.id === data.id) && localData.push(data);
     localStorage.setItem(field, JSON.stringify(localData));
   } else {
     localStorage.setItem(field, JSON.stringify([data]));
   }
 };
-export const removeFromLocalStorage = (id: number,field:string) => {
+export const removeFromLocalStorage = (id: number, field: string) => {
   let localData = parseLocalData(field);
   if (localData) {
     localData = localData.filter((item) => item.id !== id);

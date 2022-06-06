@@ -28,6 +28,11 @@ export const transactionSlice = createSlice({
     addTransaction: (state, action: PayloadAction<Transaction>) => {
       state.transactions.unshift(action.payload);
     },
+    removeTransaction: (state, action: PayloadAction<number>) => {
+      state.transactions = state.transactions.filter(
+        (transaction) => transaction.id !== action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder

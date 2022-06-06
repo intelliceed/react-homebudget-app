@@ -1,4 +1,4 @@
-import { getFromLocalStorage } from '../utilities/helpers';
+import { parseLocalData } from '../utilities/helpers';
 import { Transaction } from './../models/transaction';
 
 export const fetchTransactions = () => {
@@ -6,7 +6,7 @@ export const fetchTransactions = () => {
     setTimeout(
       () =>
         resolve({
-          data: getFromLocalStorage("transactions") as Transaction[],
+          data: parseLocalData("transactions") as Transaction[],
         }),
       1000
     );

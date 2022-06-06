@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import {
   IconButton,
   ListItem,
@@ -9,18 +9,32 @@ import {
 import { Category } from "../../models/categories";
 import ClearIcon from "@mui/icons-material/Clear";
 import ClassIcon from "@mui/icons-material/Class";
-import { useActions } from "../../store/hooks";
-import { removeFromLocalStorage } from "../../utilities/helpers";
+import { useActions, useAppSelector } from "../../store/hooks";
+import {
+  removeFromLocalStorage,
+  setToLocalStorage,
+} from "../../utilities/helpers";
+import { selectTransaction } from "../../store/reducers/transactionSlice";
 
 interface CategoryItemProps {
   category: Category;
 }
 
 const CategoryItem: FC<CategoryItemProps> = ({ category }) => {
-  const { removeCategory, setCurrentCategory } = useActions();
+  const { removeCategory, setCurrentCategory, removeTransaction } =
+    useActions();
+  const { transactions } = useAppSelector(selectTransaction);
+  const toArchive = () => {
+    transactions.map((transaction) => {
+      removeFromLocalStorage(transaction.id, "transactions");
+      setToLocalStorage(transaction, "archive");
+      removeTransaction(transaction.id);
+    });
+  };
   const onRemove = () => {
     removeFromLocalStorage(category.id, "categories");
     removeCategory(category.id);
+    toArchive();
   };
   const onSetCategory = () => {
     setCurrentCategory(category.id);

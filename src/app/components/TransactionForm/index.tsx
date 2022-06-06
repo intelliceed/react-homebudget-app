@@ -78,7 +78,7 @@ const TransactionForm: FC<TransactionFormProps> = () => {
           reg={{ ...register("categoryID", { required: true }) }}
         />
         <Button
-          sx={{ mt: 1, mx: "auto", display: "block" }}
+          sx={{ mt: 3, mx: "auto", display: "block" }}
           variant="contained"
           color="success"
           type="submit"

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ITab } from "../../models/tabs";
 import BasicTabs from "../TabPanel";
+import TransactionArchivedList from "../TransactionArchivedList";
 import TransactionList from "../TransactionList";
 
 interface TransactionTabsProps {}
@@ -13,7 +14,7 @@ const TransactionTabs: FC<TransactionTabsProps> = () => {
     },
     {
       tabName: "Archived Transactions",
-      children: <div>Archive</div>,
+      children: <TransactionArchivedList />,
     },
   ];
   return <BasicTabs tabs={tabs} />;

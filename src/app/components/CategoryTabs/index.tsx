@@ -1,6 +1,5 @@
 import { IconButton } from "@mui/material";
 import { FC } from "react";
-import { Category } from "../../models/categories";
 import { ITab } from "../../models/tabs";
 import AddCategoryForm from "../AddCategory";
 import CategoryList from "../CategoryList";

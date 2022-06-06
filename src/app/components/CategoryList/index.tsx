@@ -1,6 +1,6 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { List } from "@mui/material";
-import { Category, FetchStatus } from "../../models/categories";
+import { FetchStatus } from "../../models/categories";
 import CategoryItem from "../CategoryItem";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
