@@ -49,8 +49,12 @@ This is default page and app entry point that will represent 2-column layout:
 
 > Note: When the category gets deleted you need to move all transactions of category into `Archived Transactions` list
 
-## Example of UI Presentation
+### Example of UI Presentation
 ![wireframe](https://user-images.githubusercontent.com/1899626/167616466-3539e35b-9cce-4877-b64a-a3f4d156aa3c.png)
+
+### Graph(s)
+
+This screen should have a graph or multiple graphs to represent the data. It's up to you to decide how exactly to visualize the data. To give you an example: a graph representing total spends per category.
 
 ## How to start
 
